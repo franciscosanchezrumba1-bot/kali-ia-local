@@ -1,0 +1,16 @@
+{
+  "model": "mistral",
+  "ollama_url": "http://localhost:11434/api/generate",
+  "log_dir": "logs",
+  "report_dir": "reports",
+  "require_confirmation": true,
+  "dangerous_commands": [
+    "sudo",
+    "rm",
+    "nmap",
+    "sqlmap",
+    "msfconsole",
+    "hashcat",
+    "john"
+  ]
+}
