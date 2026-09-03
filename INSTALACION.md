@@ -13,6 +13,8 @@ bash instalar.sh
 bash start-stack.sh
 ```
 
+`instalar.sh` corrige el problema habitual de Kali con PEP 668 usando `python3 -m pip --break-system-packages`.
+
 ## Verificación rápida
 ```bash
 python3 chat-ia.py

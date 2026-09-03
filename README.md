@@ -12,6 +12,7 @@ Stack completo y automatizado que combina Kali Linux, IA local sin censura (Olla
 ```text
 kali-ia-local/
 ├── README.md
+├── CHANGELOG.md
 ├── INSTALACION.md
 ├── instalar.sh
 ├── start-stack.sh
@@ -35,12 +36,18 @@ bash instalar.sh
 bash start-stack.sh
 ```
 
+`instalar.sh` usa `python3 -m pip --break-system-packages` para evitar el error PEP 668 típico de Kali.
+
 ## Uso rápido
 
 ```bash
 python3 chat-ia.py
 python3 agente-ia.py "escanea 192.168.1.1 con nmap"
 python3 kali-tools/nmap-scanner.py -t 192.168.1.1 -i
+python3 kali-tools/sqlmap-wrapper.py -u "https://target.com/page.php?id=1" --ia
+python3 kali-tools/metasploit-runner.py --search "wordpress" --ia
+python3 kali-tools/password-cracker.py -f hashes.txt --ia
+python3 kali-tools/network-recon.py -n 192.168.1.0/24 --ia
 ```
 
 Open WebUI: http://localhost:8080
@@ -50,6 +57,15 @@ Open WebUI: http://localhost:8080
 - IA local con modelo `mistral`
 - Agente autónomo con confirmación de comandos críticos
 - Integración de nmap/sqlmap/metasploit/hashcat/john
+- Open WebUI sin Docker y alternativa con Docker Compose
 - Logging automático en `logs/`
 - Reportes JSON en `reports/`
 - Caché de escaneos en `.cache/`
+
+## Documentación
+
+- `docs/KALI_TOOLS.md`
+- `docs/WEBUI.md`
+- `docs/AGENTES.md`
+- `docs/EJEMPLOS.md`
+- `docs/SEGURIDAD.md`
