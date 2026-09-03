@@ -2,5 +2,10 @@
   "host": "0.0.0.0",
   "port": 8080,
   "ollama_base_url": "http://localhost:11434",
-  "default_model": "mistral"
+  "default_model": "mistral",
+  "models": [
+    "mistral",
+    "llama3",
+    "codellama"
+  ]
 }

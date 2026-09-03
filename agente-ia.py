@@ -40,10 +40,14 @@ def ask_ai(prompt: str) -> str:
 
 def fallback_commands(prompt: str) -> List[str]:
     p = prompt.lower()
+    if "hash" in p or "crack" in p or "contrase" in p:
+        return ["python3 kali-tools/password-cracker.py -f hashes.txt --ia"]
+    if "metasploit" in p or "exploit" in p:
+        return ["python3 kali-tools/metasploit-runner.py --search 'wordpress' --ia"]
     if "sql" in p or "sqlmap" in p:
-        return ["echo 'Usa: python3 kali-tools/sqlmap-wrapper.py -u https://target.com/item.php?id=1'"]
+        return ["python3 kali-tools/sqlmap-wrapper.py -u 'https://target.com/item.php?id=1' --ia"]
     if "red" in p or "/24" in p or "mapea" in p:
-        return ["python3 kali-tools/network-recon.py -n 192.168.1.0/24"]
+        return ["python3 kali-tools/network-recon.py -n 192.168.1.0/24 --ia"]
     if "nmap" in p or "puerto" in p or "escanea" in p:
         return ["python3 kali-tools/nmap-scanner.py -t 127.0.0.1 -p 22,80,443 -i"]
     return ["echo 'No se pudo inferir un comando. Ajusta el prompt.'"]

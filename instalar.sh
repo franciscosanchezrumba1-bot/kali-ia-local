@@ -14,7 +14,7 @@ $SUDO apt update
 $SUDO apt upgrade -y
 
 echo "[2/6] Instalando dependencias base..."
-$SUDO apt install -y curl git python3 python3-pip python3-venv nodejs npm
+$SUDO apt install -y curl git python3 python3-pip python3-venv python3-full nodejs npm
 
 echo "[3/6] Instalando herramientas Kali..."
 $SUDO apt install -y nmap sqlmap metasploit-framework aircrack-ng hashcat john
@@ -25,8 +25,11 @@ if ! command -v ollama >/dev/null 2>&1; then
 fi
 
 echo "[5/6] Instalando dependencias Python..."
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
+python3 -m pip install --break-system-packages --upgrade pip
+python3 -m pip install --break-system-packages -r requirements.txt
+
+echo "[5.1/6] Preparando Open WebUI..."
+bash webui/setup-webui.sh
 
 echo "[6/6] Descargando modelo Mistral..."
 (ollama serve >/tmp/ollama-install.log 2>&1 &) || true
